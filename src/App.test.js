@@ -1,4 +1,4 @@
-import { render , screen} from "@testing-library/react"
+import {fireEvent, render , screen} from "@testing-library/react"
 import App from "./App"
 
 test ("hi ,it's 1 test case",()=>{
@@ -9,68 +9,16 @@ test ("hi ,it's 1 test case",()=>{
   expect(title).toBeInTheDocument();
 })
 
-test ("hello, it's 2 test case",()=>{
+test("Onchange Event Test",()=>{
   render(<App/>)
-  const checkInput = screen.getByRole("textbox")
-  const checkInputPlaceHolder = screen.getByPlaceholderText("user name")
-  expect (checkInput).toBeInTheDocument()
-  expect(checkInputPlaceHolder).toBeInTheDocument()
-  expect(checkInput).toHaveAttribute("name","user-name")
-  expect(checkInput).toHaveAttribute("id","user-id")
-}) 
-
-describe.only("UI test case group", ()=>{
-  test("here test case 1",()=>{
-    render(<App/>)
-    const checkInput2= screen.getByRole("textbox")
-    expect (checkInput2).toHaveAttribute("name","user-name")
-  })
-  test("here test case 2",()=>{
-    render(<App/>)
-    const checkInput2= screen.getByRole("textbox")
-    expect (checkInput2).toHaveAttribute("name","user-name")
-  })
-  test("here test case 3",()=>{
-    render(<App/>)
-    const checkInput2= screen.getByRole("textbox")
-    expect (checkInput2).toHaveAttribute("name","user-name")
-  })
+  const checkOnChange = screen.getByRole("textbox")
+  fireEvent.change(checkOnChange,{target:{value:"a"}});
+  expect(checkOnChange.value).toBe("a")
 })
 
-
-describe.only("API test case group", ()=>{
-  test("api case group",()=>{
-    render(<App/>)
-    const checkInput = screen.getByRole("textbox")
-    expect(checkInput).toHaveAttribute("name","user-name")
-  })
-  test("api case group 2",()=>{
-    render(<App/>)
-    const checkInput = screen.getByRole("textbox")
-    expect(checkInput).toHaveAttribute("name","user-name")
-  })
-  test("api case group 3",()=>{
-    render(<App/>)
-    const checkInput = screen.getByRole("textbox")
-    expect(checkInput).toHaveAttribute("name","user-name")
-  })
-
-  describe.only("inner API test case group", ()=>{
-    test("api case group",()=>{
-      render(<App/>)
-      const checkInput = screen.getByRole("textbox")
-      expect(checkInput).toHaveAttribute("name","user-name")
-    })
-    test("api case group 2",()=>{
-      render(<App/>)
-      const checkInput = screen.getByRole("textbox")
-      expect(checkInput).toHaveAttribute("name","user-name")
-    })
-    test("api case group 3",()=>{
-      render(<App/>)
-      const checkInput = screen.getByRole("textbox")
-      expect(checkInput).toHaveAttribute("name","user-name")
-    })
-    
-  })
+test ("click event test case",()=>{
+  render(<App/>)
+  const btn = screen.getByRole("button")
+  fireEvent.click(btn)
+  expect(screen.getByText("update Data")).toBeInTheDocument();
 })
