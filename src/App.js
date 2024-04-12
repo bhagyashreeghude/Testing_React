@@ -15,6 +15,8 @@ function App() {
       {/* <input type='text' value={data} onChange={(e)=>setData(e.target.value)}/> */}
       
       <button onClick={()=>setData("update Data")}>Update data</button>
+      <h1>jest testing</h1>
+      <h2>hello testing</h2>
       <h1>{data}</h1>
     </div>
   );
