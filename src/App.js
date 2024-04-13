@@ -1,16 +1,10 @@
-import { useState } from 'react';
-
-function App() {
-  const [data,setData] = useState("")
-  const handlebtn = () =>{
-      setData("hello")
-  }
+function App(){
   return(
-      <div>
-          <h1> funfile component</h1>
-          <button data-testid="btn1" onClick={handlebtn}>button</button>
-          <h4>{data}</h4>
-      </div>
+    <div>
+      <h1>get by role</h1>
+      <input type="text" defaultValue={"good"} disabled></input>
+      <button>click me</button>
+    </div>
   )
 }
-export default App;
+export default App
